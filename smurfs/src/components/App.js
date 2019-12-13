@@ -1,10 +1,17 @@
 import React, { useEffect } from "react";
 import {connect} from 'react-redux'
 import {getSmurfs} from '../state/actionCreators'
+import Form from './Form'
 import "./App.css";
+import axios from 'axios'
+
 
 function App({getSmurfs, smurfData}) {
-
+  
+const deleteSmurf = (id) => {
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+  }
+  
   useEffect(() => {
     getSmurfs()
   }, [])
@@ -14,23 +21,19 @@ function App({getSmurfs, smurfData}) {
       <h1>Smurfs</h1>
       {smurfData.map((curr) => {
         return(
-          <div className='smurf'>
+          <div className='smurf' key={curr.id}>
             <p>Name: {curr.name}</p>
             <p>Age: {curr.age}</p>
             <p>Height: {curr.height}</p>
+            <button onClick={ function () {deleteSmurf(curr.id)}}>Delete Smurf</button>
           </div>
         )
       })}
-      <form>
-        <input name='name' placeholder='Smurf name here' />
-        <input name='age' placeholder='Smurf age here' />
-        <input name='height' placeholder='Smurf height here' />
-
-        <button type='submit'>Add</button>
-      </form>
+      <Form />
     </div>
   );
 }
+
 
 function mapStateToProps(state) {
   return {

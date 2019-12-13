@@ -9,3 +9,4 @@ export function smurfReducer(smurfData = [], action) {
             return smurfData
     }
 }
+

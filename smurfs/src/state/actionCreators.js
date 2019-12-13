@@ -14,3 +14,7 @@ export const getSmurfs = () => (dispatch) => {
         console.log(error);
       });
   };
+
+export const deleteSmurf = (id) => {
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+}

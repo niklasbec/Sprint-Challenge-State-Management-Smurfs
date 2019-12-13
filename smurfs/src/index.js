@@ -8,8 +8,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 const mainReducer = combineReducers({
-    smurfData: reducers.smurfReducer,
-    // formData: reducers.formReducer
+    smurfData: reducers.smurfReducer
 })
 
 const store = createStore(
