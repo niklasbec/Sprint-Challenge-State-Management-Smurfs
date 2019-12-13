@@ -1,12 +1,11 @@
 import * as types from './actionTypes'
 
-const initialCount = 0
 
-export function countReducer (count = initialCount, action) {
+export function smurfReducer(smurfData = [], action) {
     switch(action.type) {
-        case types.INCREMENT:
-            return count + 1
+        case types.SMURF_DATA:
+            return action.payload;
         default:
-            return count
+            return smurfData
     }
 }

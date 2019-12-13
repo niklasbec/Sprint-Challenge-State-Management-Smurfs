@@ -1,1 +1,3 @@
-export const INCREMENT = 'INCREMENT'
+export const SMURF_DATA = 'SMURF_DATA'
+
+

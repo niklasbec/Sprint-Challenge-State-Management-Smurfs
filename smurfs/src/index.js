@@ -8,13 +8,17 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 const mainReducer = combineReducers({
-    count: reducers.countReducer
+    smurfData: reducers.smurfReducer,
+    // formData: reducers.formReducer
 })
 
 const store = createStore(
     mainReducer,
     {},
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    compose(
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
   );
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("root"));
